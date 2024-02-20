@@ -15,10 +15,11 @@ LABEL org.opencontainers.image.source=https://github.com/kiwigrid/k8s-sidecar
 LABEL org.opencontainers.image.description="K8s sidecar image to collect configmaps and secrets as files"
 LABEL org.opencontainers.image.licenses=MIT
 ENV         PYTHONUNBUFFERED=1
-# Update and install Git
+# Update and install curl
 RUN apk update && \
     apk add git
-
+RUN apk update && \
+    apk add curl
 WORKDIR /app
 COPY --from=builder /app /app
 ENV PATH="/app/.venv/bin:$PATH"
