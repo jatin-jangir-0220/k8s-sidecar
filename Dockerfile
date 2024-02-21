@@ -20,6 +20,8 @@ RUN apk update && \
     apk add git
 RUN apk update && \
     apk add curl
+RUN apk update && \
+    apk add rsync
 WORKDIR /app
 COPY --from=builder /app /app
 ENV PATH="/app/.venv/bin:$PATH"
